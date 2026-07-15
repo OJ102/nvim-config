@@ -20,6 +20,7 @@
 - A [Nerd Font](https://www.nerdfonts.com/) in your terminal, for icons
 - `ripgrep` (`rg`) — used by Telescope search
 - A debug adapter per language if you want DAP to do anything (e.g. `debugpy` for Python, `delve` for Go) — install via `:Mason`
+- `node`/`npm` — needed by markdown-preview.nvim's build step
 
 ## Install
 ```
@@ -57,6 +58,12 @@ On top of the NvChad base (`nvim-cmp`, `mason.nvim`, `gitsigns.nvim`, `nvim-auto
 - **mason-lspconfig.nvim** — bridges `mason.nvim`-installed LSP servers into `nvim-lspconfig` automatically.
   - `ensure_installed` list lives in `lua/plugins/init.lua`, currently `{ "html", "cssls" }` (matches `lua/configs/lspconfig.lua`).
   - Add a language server: run `:Mason` to browse/install, add its name to both `ensure_installed` here and `servers` in `lua/configs/lspconfig.lua`.
+
+## Markdown
+- **markdown-preview.nvim** — live preview in browser, syncs as you edit.
+  - `<leader>mp` or `:MarkdownPreviewToggle` — toggle preview
+  - `:MarkdownPreview` / `:MarkdownPreviewStop` — start/stop explicitly
+  - Lazy-loaded on markdown filetype or command.
 
 ## Debugging
 - **nvim-dap** + **nvim-dap-ui** + **nvim-dap-virtual-text** — full debugger with UI and inline variable values.
