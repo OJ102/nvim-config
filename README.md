@@ -5,6 +5,38 @@
 - So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
 - This repo is mainly for me to have my nvim config easily accessible
 
+# Install / getting started
+
+## Prerequisites
+- Neovim >= 0.9 (0.10+ recommended)
+- `git`
+- `curl` and `tar` (parser downloads)
+- `tree-sitter` CLI — nvim-treesitter compiles parsers via `tree-sitter build`, a plain C compiler is **not** enough on its own. Install via prebuilt binary (no root needed):
+  ```
+  curl -sL -o tree-sitter.gz "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz"
+  gunzip tree-sitter.gz && chmod +x tree-sitter && mv tree-sitter ~/.local/bin/
+  ```
+  (swap `linux-x64` for your platform's asset name)
+- A [Nerd Font](https://www.nerdfonts.com/) in your terminal, for icons
+- `ripgrep` (`rg`) — used by Telescope search
+- A debug adapter per language if you want DAP to do anything (e.g. `debugpy` for Python, `delve` for Go) — install via `:Mason`
+
+## Install
+```
+git clone https://github.com/OJ102/nvim-config.git ~/.config/nvim
+nvim
+```
+First launch auto-bootstraps `lazy.nvim` and installs all plugins — wait for it to finish, then restart nvim.
+
+Then inside nvim:
+```
+:MasonInstallAll   " if available, or :Mason to install LSP servers manually
+:TSUpdate
+:TSInstallAll      " compiles/installs treesitter parsers (needs tree-sitter CLI, see above)
+```
+
+Check `:checkhealth nvim-treesitter` and `:checkhealth` afterward — both should be clean before relying on highlighting/LSP.
+
 # Custom additions
 
 On top of the NvChad base (`nvim-cmp`, `mason.nvim`, `gitsigns.nvim`, `nvim-autopairs`, etc. already ship in core), this config adds:
